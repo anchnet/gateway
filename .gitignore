@@ -36,3 +36,6 @@ git.go
 
 .gitversion
 perfcounter.json
+
+.vscode/
+debug

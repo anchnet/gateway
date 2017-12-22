@@ -36,12 +36,23 @@ type TransferConfig struct {
 }
 
 type GlobalConfig struct {
-	Debug    bool            `json:"debug"`
-	Http     *HttpConfig     `json:"http"`
-	Rpc      *RpcConfig      `json:"rpc"`
-	Socket   *SocketConfig   `json:"socket"`
-	Transfer *TransferConfig `json:"transfer"`
+	Debug        bool              `json:"debug"`
+	Http         *HttpConfig       `json:"http"`
+	Rpc          *RpcConfig        `json:"rpc"`
+	Socket       *SocketConfig     `json:"socket"`
+	Transfer     *TransferConfig   `json:"transfer"`
+	SmartEye     string            `json:"smarteye"`
+	ThirdMetrics map[string]string `json:"thirdmetrics"`
 }
+
+// var ThirdMetrics = map[string]string{
+// 	"cpu":               "cpu.busy",
+// 	"usedmem":           "mem.memused",
+// 	"usedmempercentage": "mem.memused.percent",
+// 	"useddisk":          "df.bytes.used",
+// 	"freedisk":          "df.bytes.free",
+// 	"status":            "agent.alive",
+// }
 
 var (
 	ConfigFile string

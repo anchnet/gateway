@@ -1,8 +1,8 @@
 package receiver
 
 import (
-	"github.com/open-falcon/gateway/receiver/rpc"
-	"github.com/open-falcon/gateway/receiver/socket"
+	"github.com/anchnet/gateway/receiver/rpc"
+	"github.com/anchnet/gateway/receiver/socket"
 )
 
 func Start() {

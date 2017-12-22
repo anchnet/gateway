@@ -19,3 +19,33 @@ func (t *TransferResp) String() string {
 	}
 	return s
 }
+
+type ProxyMetricValue struct {
+	Endpoint  string      `json:"device_id"`
+	Metric    string      `json:"metric"`
+	Value     interface{} `json:"value"`
+	Step      int64       `json:"step"`
+	Tags      string      `json:"tags"`
+	Timestamp string      `json:"timestamp"`
+}
+
+func (this *ProxyMetricValue) String() string {
+	return fmt.Sprintf(
+		"<Endpoint:%s, Metric:%s,Tags:%s, Step:%d, Time:%s, Value:%v>",
+		this.Endpoint,
+		this.Metric,
+		this.Tags,
+		this.Step,
+		this.Timestamp,
+		this.Value,
+	)
+}
+
+type ProxyResp struct {
+	Msg   string `json:"message"`
+	Satus string `json:"status"`
+}
+
+func (p *ProxyResp) String() string {
+	return fmt.Sprintf("ProxyResp Msg=%s, Satus=%s", p.Msg, p.Satus)
+}

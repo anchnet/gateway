@@ -7,8 +7,8 @@ import (
 
 	cutils "github.com/open-falcon/common/utils"
 
-	"github.com/open-falcon/gateway/g"
-	"github.com/open-falcon/gateway/sender"
+	"github.com/anchnet/gateway/g"
+	"github.com/anchnet/gateway/sender"
 )
 
 func configProcHttpRoutes() {

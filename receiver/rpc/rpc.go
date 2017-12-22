@@ -6,7 +6,7 @@ import (
 	"net/rpc"
 	"net/rpc/jsonrpc"
 
-	"github.com/open-falcon/gateway/g"
+	"github.com/anchnet/gateway/g"
 )
 
 func StartRpc() {

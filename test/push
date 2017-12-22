@@ -8,12 +8,52 @@ httpport=`cat cfg.json | grep -A3 "\"http\":" | grep "\"listen\"" | cut -d\" -f4
 httpprex="127.0.0.1:$httpport"
 
 function http_push(){
-    e="e.niean"
-    m="m.niean"
+    e="e.zsf"
+    m="m.zsf"
     t="t0=tag0,t1=tag1"
     ts=`date +%s`
     val=`expr $ts / 60 % 10`
     curl -s -X POST -d "[{\"metric\":\"$m\", \"endpoint\":\"$e\", \"timestamp\":$ts,\"step\":60, \"value\":$val, \"counterType\":\"GAUGE\",\"tags\":\"$t\"}]" "$httpprex/api/push" | python -m json.tool
 }
 
-http_push
+function proxy_http_push(){
+    e="zsf_test_proxy2"
+    m1="useddisk"
+    m2="status"
+    m3="status3"
+    m4="status4"
+    m5="status5"
+    t="t4=tag4,t5=tag5"
+    ts=`date +%Y-%m-%d\ %H:%M:%S`
+    val1="1000G"
+    val2=1
+    val4=0
+    curl -s -X POST -d "[ \
+    {\"metric\":\"$m1\", \"device_id\":\"$e\",\"timestamp\":\"$ts\",\"step\":120, \"value\":\"$val1\", \"tags\":\"$t\"},\
+    {\"metric\":\"$m2\", \"device_id\":\"$e\",\"timestamp\":\"$ts\",\"step\":120, \"value\":\"$val2\", \"tags\":\"$t\"},\
+    {\"metric\":\"$m3\", \"device_id\":\"$e\",\"timestamp\":\"$ts\",\"step\":120, \"value\":$val2, \"tags\":\"\"},\
+    {\"metric\":\"$m4\", \"device_id\":\"$e\",\"timestamp\":\"$ts\",\"step\":120, \"value\":$val4, \"tags\":\"\"},\
+    {\"metric\":\"$m5\", \"device_id\":\"$e\",\"timestamp\":\"$ts\",\"step\":120, \"value\":\"$val4\", \"tags\":\"\"}\
+    ]" \
+     "$httpprex/api/proxy/push" | python -m json.tool
+}
+
+
+
+function proxy_push(){
+    curl -H "Content-Type: application/json" -X POST \
+      --data '[{"guid":"100","gname":"test1"},{"guid":"101","gname":"test2"}]'\
+       "$httpprex/api/add/user"  | python -m json.tool
+}
+
+# proxy_push
+
+for ((i=1;i<=100;i++))
+do
+# http_push
+proxy_http_push
+# echo `date +%T`
+sleep 60
+done;
+
+

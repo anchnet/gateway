@@ -6,7 +6,7 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 
-	"github.com/open-falcon/gateway/g"
+	"github.com/anchnet/gateway/g"
 )
 
 type Dto struct {
@@ -31,6 +31,8 @@ func startHttpServer() {
 	configCommonRoutes()
 	configProcHttpRoutes()
 	configApiHttpRoutes()
+	configApiProxyHttpRoutes()
+	configApiAddUser()
 
 	s := &http.Server{
 		Addr:           addr,

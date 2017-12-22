@@ -11,7 +11,7 @@ import (
 	nsema "github.com/toolkits/concurrent/semaphore"
 	nlist "github.com/toolkits/container/list"
 
-	"github.com/open-falcon/gateway/g"
+	"github.com/anchnet/gateway/g"
 )
 
 func startSendTasks() {
