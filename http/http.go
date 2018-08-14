@@ -31,8 +31,8 @@ func startHttpServer() {
 	configCommonRoutes()
 	configProcHttpRoutes()
 	configApiHttpRoutes()
-	configApiProxyHttpRoutes()
-	configApiAddUser()
+	// configApiProxyHttpRoutes()
+	// configApiAddUser()
 
 	s := &http.Server{
 		Addr:           addr,
